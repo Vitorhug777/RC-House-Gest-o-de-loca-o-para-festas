@@ -2,8 +2,6 @@
 
 Aplicação Web Progressiva (PWA) desenvolvida à medida para a gestão operacional de agendamentos, geração instantânea de contratos de locação em formato A4 com recolha de assinatura digital e sincronização bidirecional em tempo real.
 
-🔗 **Demonstração online:** [https://rchousegestao.vercel.app](https://rchousegestao.vercel.app)
-
 ---
 
 ## 💡 O Desafio & A Solução
