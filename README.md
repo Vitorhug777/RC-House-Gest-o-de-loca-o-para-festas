@@ -28,21 +28,3 @@ Aplicação Web Progressiva (PWA) desenvolvida à medida para a gestão operacio
 * **Bibliotecas Client-Side:** jsPDF, html2canvas, Signature Pad.
 * **Backend Serverless:** Google Apps Script (REST/JSON API) + Google Sheets.
 * **Alojamento & CI/CD:** Vercel.
-
----
-
-## 💻 Como Executar Localmente
-
-```bash
-# Clonar o repositório
-git clone [https://github.com/SEU_UTILIZADOR/rc-house-agenda.git](https://github.com/SEU_UTILIZADOR/rc-house-agenda.git)
-cd rc-house-agenda
-
-# Instalar dependências de estilização
-npm install
-
-# Compilar o CSS via Tailwind
-npm run build:css
-
-# Iniciar o servidor de desenvolvimento local
-npm start
