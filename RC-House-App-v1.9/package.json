@@ -1,0 +1,14 @@
+{
+  "name": "rc-house-agenda",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RC House Espaço de Eventos — PWA de agendamentos e gerador de contratos A4",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./css/app.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./css/app.css --watch",
+    "start": "npx serve ."
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

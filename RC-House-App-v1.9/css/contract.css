@@ -1,0 +1,120 @@
+/* =========================================================================
+   Contrato RC House — Folha Única A4 (794 × 1122 px @ 96dpi)
+   ========================================================================= */
+.ct-page {
+  --ct-ink: #111114;
+  --ct-muted: #5b5b66;
+  --ct-line: #d8d8de;
+  --ct-gold: #b8952a;
+  --ct-gold-soft: #f7f2e3;
+  width: 794px;
+  height: 1122px;
+  overflow: hidden;
+  background: #fff;
+  color: var(--ct-ink);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 11.4px;
+  line-height: 1.52;
+  box-sizing: border-box;
+  padding: 26px;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: normal;   /* evita espaços extra nos números ao gerar o PDF */
+  font-variant-numeric: normal;
+}
+.ct-page *, .ct-page *::before, .ct-page *::after { box-sizing: border-box; }
+.ct-frame {
+  position: relative;
+  height: 100%;
+  border: 1px solid #e4e4e9;
+  border-radius: 6px;
+  padding: 20px 26px 0;
+}
+.ct-frame::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4px;
+  background: linear-gradient(90deg, #0D0D10 0%, #0D0D10 60%, #D4AF37 60%, #D4AF37 100%);
+  border-radius: 6px 6px 0 0;
+}
+
+/* Cabeçalho */
+.ct-header { display: flex; align-items: center; gap: 16px; padding-top: 6px; }
+.ct-logo { width: 72px; height: 72px; border-radius: 50%; flex: none; }
+.ct-titles { flex: 1; min-width: 0; }
+.ct-titles h1 {
+  font-family: 'Playfair Display', Georgia, serif; font-weight: 700;
+  font-size: 23px; letter-spacing: .06em; margin: 0; line-height: 1.15; color: #0D0D10;
+}
+.ct-titles p {
+  margin: 4px 0 0; font-size: 9.6px; letter-spacing: .16em; font-weight: 600; color: var(--ct-gold);
+}
+.ct-datebox {
+  flex: none; background: #0D0D10; color: #fff; border-radius: 10px; padding: 9px 16px 10px;
+  text-align: center; min-width: 150px; border: 1px solid #0D0D10;
+}
+.ct-datebox span { display: block; font-size: 8.4px; letter-spacing: .18em; font-weight: 700; color: #D4AF37; }
+.ct-datebox strong { display: block; font-size: 19px; font-weight: 700; letter-spacing: .04em; margin-top: 2px; }
+.ct-rule { height: 1px; background: linear-gradient(90deg, #D4AF37, rgba(212, 175, 55, .15)); margin: 14px 0 12px; }
+
+/* Partes */
+.ct-parties { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ct-party { min-height: 0; }
+.ct-party { border: 1px solid var(--ct-line); border-radius: 8px; padding: 9px 12px 8px; background: #fbfbfc; }
+.ct-party h3 { margin: 0 0 6px; font-size: 10.2px; letter-spacing: .08em; font-weight: 800; color: #0D0D10; }
+.ct-party p { margin: 3px 0; font-size: 11.2px; }
+.ct-party p > span:first-child, .ct-row2 span > span { color: var(--ct-muted); }
+.ct-row2 { display: flex; gap: 14px; }
+.ct-blank { display: inline-block; min-width: 90px; border-bottom: 1px solid #9a9aa5; height: 11px; vertical-align: baseline; }
+
+/* Cláusulas */
+.ct-clause { margin-top: 15px; }
+.ct-clause h2 {
+  margin: 0 0 5px; font-size: 11.4px; font-weight: 800; letter-spacing: .03em; color: #0D0D10;
+  padding-left: 8px; border-left: 3px solid #D4AF37; line-height: 1.3;
+}
+.ct-clause p { margin: 0; text-align: justify; }
+.ct-clause ul { list-style: none; margin: 0; padding: 0; }
+.ct-clause li { margin: 0 0 5px; text-align: justify; }
+.ct-highlight {
+  margin-top: 7px; display: flex; align-items: center; gap: 10px; flex-wrap: nowrap;
+  background: var(--ct-gold-soft); border: 1px solid #ecdfb5; border-radius: 7px; padding: 7px 12px; font-size: 11.4px;
+}
+.ct-highlight i { color: #c9b26a; font-style: normal; }
+.ct-highlight .ct-grow { flex: 1; min-width: 0; }
+.ct-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 7px; }
+.ct-value { border: 1px solid var(--ct-line); border-radius: 8px; padding: 10px 10px 9px; text-align: center; background: #fff; }
+.ct-value span { display: block; font-size: 9.2px; font-weight: 800; letter-spacing: .08em; color: var(--ct-muted); }
+.ct-value strong { display: block; font-size: 18px; font-weight: 800; color: #0D0D10; margin: 2px 0 0; }
+.ct-value em { display: block; font-size: 9.4px; color: var(--ct-muted); }
+.ct-value--accent { border-color: #e2cf8f; background: var(--ct-gold-soft); }
+.ct-caucao { margin-top: 4px; padding-top: 4px; border-top: 1px dashed #d9c27a; font-size: 9.4px; font-weight: 700; letter-spacing: .04em; color: #6e5713; }
+.ct-pix { margin-top: 8px !important; font-size: 11.4px; }
+
+/* Fechamento e assinaturas */
+.ct-closing { margin-top: 15px; }
+.ct-closing p { margin: 0; }
+.ct-place { margin-top: 5px !important; }
+.ct-signs { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; margin-top: 8px; padding: 0 16px; }
+.ct-sign { text-align: center; }
+/* Área da assinatura desenhada (mantém a mesma altura com ou sem imagem: a folha continua com 1 página) */
+.ct-sig-area { height: 46px; display: flex; align-items: flex-end; justify-content: center; }
+.ct-sig-area img { max-height: 56px; max-width: 82%; margin-bottom: -8px; object-fit: contain; }
+.ct-sig-here { font-size: 9px; font-weight: 800; letter-spacing: .12em; color: var(--ct-gold); border: 1px dashed var(--ct-gold); border-radius: 6px; padding: 3px 10px; margin-bottom: 6px; background: var(--ct-gold-soft); }
+.ct-sign em { display: block; font-style: normal; font-size: 7.6px; line-height: 1.35; color: var(--ct-muted); margin-top: 3px; letter-spacing: 0; }
+.ct-line { border-top: 1px solid #111; margin-bottom: 5px; }
+.ct-sign strong { display: block; font-size: 11.8px; }
+.ct-sign span { display: block; font-size: 8.8px; letter-spacing: .1em; color: var(--ct-muted); font-weight: 700; }
+.ct-footer {
+  position: absolute; left: 26px; right: 26px; bottom: 0; padding: 10px 0 12px;
+  border-top: 1px solid #ececf0; text-align: center; font-size: 9.2px; color: #7a7a85; letter-spacing: .03em;
+}
+
+/* Host fora do ecrã usado para gerar o PDF */
+.ct-render-host { position: fixed; left: -12000px; top: 0; width: 794px; z-index: -1; pointer-events: none; }
+
+/* Impressão direta (Ctrl+P) — apenas o contrato */
+@media print {
+  @page { size: A4; margin: 0; }
+  body.printing-contract > *:not(.print-host) { display: none !important; }
+  .print-host { display: block !important; }
+  .print-host .ct-page { width: 210mm; height: 296.5mm; }
+}

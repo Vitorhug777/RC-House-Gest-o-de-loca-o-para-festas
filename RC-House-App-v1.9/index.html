@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>RC House · Agenda & Contratos</title>
+  <meta name="description" content="Gestão de agendamentos e gerador automático de contratos da RC House Espaço de Eventos.">
+  <meta name="theme-color" content="#0D0D10">
+  <meta name="color-scheme" content="light">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="RC House">
+  <meta name="application-name" content="RC House">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+  <link rel="preload" href="assets/fonts/PlusJakartaSans-var.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="assets/fonts/PlayfairDisplay-var.woff" as="font" type="font/woff" crossorigin>
+
+  <link rel="stylesheet" href="css/app.css?v=1.9.0">
+  <link rel="stylesheet" href="css/contract.css?v=1.9.0">
+</head>
+<body>
+  <div id="app" class="min-h-dvh lg:grid lg:grid-cols-[248px_minmax(0,1fr)]">
+
+    <!-- ============ Sidebar (Desktop) ============ -->
+    <aside id="sidebar" class="hidden lg:flex flex-col sticky top-0 h-dvh bg-obsidian text-white px-4 py-6 overflow-y-auto no-scrollbar">
+      <a href="#/agenda" class="flex items-center gap-3 px-1">
+        <img src="assets/brand/logo-rc-house.png" alt="Logo RC House" class="w-14 h-14 rounded-full ring-1 ring-white/10">
+        <div class="leading-tight">
+          <div class="font-display text-xl font-semibold tracking-wide">RC House</div>
+          <div class="text-[11px] uppercase tracking-[.2em] text-gold">Espaço de Eventos</div>
+        </div>
+      </a>
+
+      <nav class="mt-9 flex flex-col gap-1.5" id="sideNav">
+        <a href="#/agenda" data-nav="agenda" class="nav-item"><span data-icon="calendar-days"></span>Painel & Agenda</a>
+        <a href="#/reservas" data-nav="reservas" class="nav-item"><span data-icon="clipboard-list"></span>Reservas</a>
+        <a href="#/novo" data-nav="novo" class="nav-item"><span data-icon="calendar-plus"></span>Novo Agendamento</a>
+        <a href="#/ajustes" data-nav="ajustes" class="nav-item"><span data-icon="settings"></span>Ajustes</a>
+      </nav>
+
+      <div class="mt-auto pt-6 space-y-3">
+        <a href="#/ajustes" class="js-sync-pill sync-side" data-sync-variant="side" aria-live="polite"></a>
+        <button type="button" data-action="install" class="js-install-btn w-full flex items-center gap-3 rounded-2xl border border-gold/30 bg-gold/10 px-4 py-3 text-left hover:bg-gold/15 transition">
+          <span class="grid place-items-center w-9 h-9 rounded-xl bg-gold text-obsidian"><span data-icon="smartphone" data-cls="w-4 h-4"></span></span>
+          <span class="leading-tight"><span class="block text-sm font-bold text-gold">Instalar App</span><span class="block text-[11px] text-white/50">Atalho no celular / PC</span></span>
+        </button>
+        <p class="text-[11px] leading-relaxed text-white/35 px-1">Av. Abadio Bonifácio da Silva, 153<br>Granada · Uberlândia - MG</p>
+      </div>
+    </aside>
+
+    <!-- ============ Conteúdo principal ============ -->
+    <div class="min-w-0">
+      <header id="topbar" class="lg:hidden sticky top-0 z-30 glass-dark text-white pt-safe">
+        <div class="h-16 px-4 flex items-center gap-3">
+          <img src="assets/brand/logo-rc-house.png" alt="Logo RC House" class="w-10 h-10 rounded-full ring-1 ring-white/10">
+          <div class="leading-tight flex-1 min-w-0">
+            <div class="font-display text-lg font-semibold tracking-wide">RC House</div>
+            <div id="topSubtitle" class="text-[10px] uppercase tracking-[.2em] text-gold truncate">Espaço de Eventos</div>
+          </div>
+          <a href="#/ajustes" class="js-sync-pill sync-top" data-sync-variant="top" aria-live="polite"></a>
+          <button type="button" data-action="install" class="js-install-btn h-10 pl-3 pr-3.5 rounded-full bg-gold/15 text-gold text-xs font-bold flex items-center gap-1.5 border border-gold/25" aria-label="Instalar app">
+            <span data-icon="download" data-cls="w-4 h-4"></span>Instalar
+          </button>
+        </div>
+      </header>
+
+      <main id="view" class="px-4 sm:px-6 lg:px-8 pt-4 lg:pt-6 pb-36 lg:pb-10 mx-auto" tabindex="-1"></main>
+    </div>
+
+    <!-- ============ Painel lateral direito (Desktop XL — só em Agenda e Reservas) ============ -->
+    <aside id="rightPanel" class="hidden flex-col sticky top-0 h-dvh overflow-y-auto no-scrollbar bg-white border-l border-black/5" aria-label="Detalhes"></aside>
+  </div>
+
+  <!-- ============ Bottom Navigation (Mobile) ============ -->
+  <nav id="bottomNav" class="lg:hidden fixed z-40 left-3 right-3 bottom-3 pb-safe">
+    <div class="glass-dark rounded-[26px] h-[70px] flex items-stretch px-2 shadow-lift border border-white/10">
+      <a href="#/agenda" data-nav="agenda" class="tab-btn"><span data-icon="calendar-days" data-cls="w-6 h-6"></span>Agenda</a>
+      <a href="#/reservas" data-nav="reservas" class="tab-btn"><span data-icon="clipboard-list" data-cls="w-6 h-6"></span>Reservas</a>
+      <a href="#/novo" data-nav="novo" class="tab-btn !text-obsidian">
+        <span class="-mt-7 grid place-items-center w-[58px] h-[58px] rounded-[20px] bg-gold shadow-glow ring-4 ring-mist"><span data-icon="plus" data-cls="w-7 h-7"></span></span>
+        <span class="text-white/70 js-novo-label">Novo</span>
+      </a>
+      <a href="#/ajustes" data-nav="ajustes" class="tab-btn"><span data-icon="settings" data-cls="w-6 h-6"></span>Ajustes</a>
+    </div>
+  </nav>
+
+  <!-- Camadas: overlays, diálogos, toasts e banner de instalação -->
+  <div id="overlayRoot"></div>
+  <div id="dialogRoot"></div>
+  <div id="toastRoot" class="fixed top-3 inset-x-0 z-[90] flex flex-col items-center gap-2 pointer-events-none px-4 pt-safe"></div>
+  <div id="installRoot"></div>
+  <div id="loginRoot"></div>
+
+  <noscript>
+    <div style="padding:24px;font-family:sans-serif">Ative o JavaScript para usar o app RC House.</div>
+  </noscript>
+
+  <!-- Atualização do app: quando uma nova versão do Service Worker assume o controlo,
+       recarrega uma vez para não continuar a mostrar ficheiros antigos em cache. -->
+  <script>
+    (function () {
+      if (!('serviceWorker' in navigator) || !/^https?:$/.test(location.protocol)) return;
+      var had = !!navigator.serviceWorker.controller, done = false;
+      navigator.serviceWorker.addEventListener('controllerchange', function () {
+        if (!had || done) return; done = true; location.reload();
+      });
+      navigator.serviceWorker.getRegistration().then(function (r) { if (r) r.update().catch(function () { }); });
+    })();
+  </script>
+  <script src="js/config.js?v=1.9.0" defer></script>
+  <script src="js/icons.js?v=1.9.0" defer></script>
+  <script src="js/logo-data.js?v=1.9.0" defer></script>
+  <script src="js/utils.js?v=1.9.0" defer></script>
+  <script src="js/store.js?v=1.9.0" defer></script>
+  <script src="js/sync.js?v=1.9.0" defer></script>
+  <script src="js/signature-pad.js?v=1.9.0" defer></script>
+  <script src="js/contract.js?v=1.9.0" defer></script>
+  <script src="js/app.js?v=1.9.0" defer></script>
+</body>
+</html>
